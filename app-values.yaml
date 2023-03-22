@@ -31,6 +31,6 @@ extraDeploy:
     metadata:
       name: foo1-secret
     stringData: 
-    {{- if .Values.externalConfigs.envVars.envVarsSecret }}
-    {{- .Values.externalConfigs.envVars.envVarsSecret | nindent 4 }}
+    {{- if .Values.envVarsSecret }}
+    {{- .Values.envVarsSecret | nindent 4 }}
     {{- end }}
