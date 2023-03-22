@@ -32,7 +32,7 @@ extraDeploy:
       name: foo1-secret
     stringData: 
     {{- if .Values.kemo }}
-    {{- .Values.kemo | nindent 4 }}
+    {{- .Values.kemo | nindent 2 }}
     {{- end }}
       #     {{- if .Values.externalConfigs.envVars.envVarsSecret }}
       #     {{- .Values.externalConfigs.envVars.envVarsSecret | nindent 4 }}
