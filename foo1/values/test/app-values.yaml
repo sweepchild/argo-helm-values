@@ -34,6 +34,3 @@ extraDeploy:
     {{- if .Values.kemo }}
     {{- .Values.kemo | nindent 2 }}
     {{- end }}
-      #     {{- if .Values.externalConfigs.envVars.envVarsSecret }}
-      #     {{- .Values.externalConfigs.envVars.envVarsSecret | nindent 4 }}
-      #     {{- end }}
