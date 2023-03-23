@@ -23,14 +23,3 @@ ingress:
   - hosts:
       - "*.mnmedya.com"
 
-extraDeploy:
-  - |
-    apiVersion: v1
-    kind: Secret
-    type: Opaque
-    metadata:
-      name: foo3-secret
-    stringData: 
-    {{- if .Values.envVarsSecret }}
-    {{- .Values.envVarsSecret | nindent 4 }}
-    {{- end }}
