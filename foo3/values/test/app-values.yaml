@@ -1,0 +1,36 @@
+#
+persistence:
+  accessModes:
+    - ReadWriteMany
+
+ingress:
+  enabled: true
+  tls: true
+  className: nginx
+  pathType: ImplementationSpecific
+  hostname: foo3.mnmedya.com
+  path: /
+  annotations: 
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 32k
+    nginx.ingress.kubernetes.io/proxy-buffers-number: "128"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "86400"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "86400"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "86400"
+    nginx.ingress.kubernetes.io/proxy-body-size: 100m
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+  extraTls:
+  - hosts:
+      - "*.mnmedya.com"
+
+extraDeploy:
+  - |
+    apiVersion: v1
+    kind: Secret
+    type: Opaque
+    metadata:
+      name: foo3-secret
+    stringData: 
+    {{- if .Values.envVarsSecret }}
+    {{- .Values.envVarsSecret | nindent 4 }}
+    {{- end }}
