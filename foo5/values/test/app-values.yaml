@@ -1,4 +1,6 @@
 #
+replicaCount: 2
+
 persistence:
   accessModes:
     - ReadWriteMany
